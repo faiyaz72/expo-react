@@ -4,6 +4,7 @@ import AppCard from "./app/components/AppCard/AppCard";
 import { View, StyleSheet } from "react-native";
 import Colors from "./app/config/Colors";
 import ListingDetailScreen from "./app/screens/ListingDetailScreen";
+import ViewImageScreen from "./app/screens/ViewImageScreen";
 
 export default function App(): React.JSX.Element {
   return (
@@ -12,7 +13,8 @@ export default function App(): React.JSX.Element {
     // <View style={styles.container}>
     //   <AppCard title="Red Jacket for Sale" subTitle="$100" image={require("./app/assets/jacket.jpg")} />
     // </View>
-    <ListingDetailScreen />
+    // <ListingDetailScreen />
+    <ViewImageScreen />
   );
 }
 
