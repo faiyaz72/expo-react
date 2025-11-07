@@ -7,26 +7,29 @@ import Swipeable from "react-native-gesture-handler/ReanimatedSwipeable";
 export default function ListItem({
   title,
   subTitle,
-  image,
+  image = null,
+  IconComponent,
   onPress,
   renderRightActions,
 }: {
   title: string;
-  subTitle: string;
-  image: any;
-  onPress: () => void;
-  renderRightActions: () => React.ReactNode;
+  subTitle?: string;
+  image?: any;
+  IconComponent?: React.ReactNode;
+  onPress?: () => void;
+  renderRightActions?: () => React.ReactNode;
 }) {
   return (
     <Swipeable
-      renderRightActions={renderRightActions}
+      renderRightActions={renderRightActions || undefined}
     >
       <TouchableHighlight onPress={onPress} underlayColor={Colors.light}>
         <View style={styles.container}>
-          <Image source={image} style={styles.image} />
+          {image && <Image source={image} style={styles.image} />}
+          {IconComponent && IconComponent}
           <View style={styles.detailsContainer}>
             <AppText style={styles.title}>{title}</AppText>
-            <AppText style={styles.subTitle}>{subTitle}</AppText>
+            {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
           </View>
         </View>
       </TouchableHighlight>
@@ -47,6 +50,7 @@ const styles = StyleSheet.create({
   },
   detailsContainer: {
     marginLeft: 10,
+    justifyContent: "center"
   },
   title: {
     fontSize: 16,
